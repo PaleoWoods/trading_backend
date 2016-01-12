@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response,RequestContext
 from django.contrib.auth.decorators import login_required
-from website.common.CommonPaginator import SelfPaginator
+from website.common.CommonPaginator import self_paginator
 
 from UserManage.forms import PermissionListForm
 from UserManage.models import User,RoleList,PermissionList
@@ -80,7 +80,7 @@ def ListPermission(request):
     mList = PermissionList.objects.all()
 
     #分页功能
-    lst = SelfPaginator(request,mList, 20)
+    lst = self_paginator(request, mList, 20)
 
     kwvars = {
         'lPage':lst,
